@@ -121,6 +121,15 @@ public class Person {
 			say("Hi " + Utility.verbalizeList(people, "no one")); // "no one" can't happen
 		}
 	}
+	//adding give method
+	public void give(Thing thing, Person recipient) {
+		if(!possessions.contains(thing)) {
+			Utility.displayMessage(this + "doesn't have" + thing);
+			return;
+		}
+		this.lose(thing); //removed from players possessions
+		recipient.take(thing); //added to receivers possessions
+	}
 	
 	@Override
 	public String toString() {

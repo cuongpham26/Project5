@@ -22,7 +22,7 @@ public class GackWorld extends World {
 		Place computerLab = new Place("Computer Lab");
 		Place offices = new Place("Offices");
 		Place dormitory = new Place("Dormitory");
-		Place pond = new Place("Pond");
+		Place pond = new Place("Pond"); 
 		
 		foodService.addNewNeighbor("down", po);
 		po.addNewNeighbor("south", alumniHall);
@@ -57,7 +57,8 @@ public class GackWorld extends World {
 		}
 		computerLab.gain(new Scroll("Unix Programmers Manual"));
 		computerLab.gain(new Scroll("NeXT User's Reference"));
-		
+		//added a new scroll
+		dormitory.gain(new Scroll("late lab report"));
 		setPlayer(new Person("player", dormitory));
 	}
 }
