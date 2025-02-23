@@ -65,6 +65,14 @@ public class Person {
 			Utility.displayMessage(this + " does not have " + scroll);
 		}
 	}
+	//adding the eat method 
+	public void eat(Chocolate chocolate) {
+		if ((chocolate.isOwned()) && (chocolate.getOwner().equals(this))) {
+			chocolate.beEaten();
+		} else {
+			Utility.displayMessage(this + " does not have " + chocolate);
+		}
+	}
 	
 	public void haveFit() {
 		say("Yaaaah! I am upset");

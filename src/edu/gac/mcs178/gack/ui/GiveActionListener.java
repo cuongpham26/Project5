@@ -24,7 +24,7 @@ public class GiveActionListener implements ActionListener {
 
 	public GiveActionListener(GraphicalUserInterface gui, Person player, JComboBox giveJComboBox) {
 		super();
-		this.gui = gui;
+		this.gui = gui; 
 		this.player = player;
 		this.giveJComboBox = giveJComboBox;
 		this.enabled = true;
