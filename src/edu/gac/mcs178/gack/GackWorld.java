@@ -5,6 +5,7 @@ import edu.gac.mcs178.gack.domain.Chocolate;
 import edu.gac.mcs178.gack.domain.Person;
 import edu.gac.mcs178.gack.domain.Place;
 import edu.gac.mcs178.gack.domain.Scroll;
+import edu.gac.mcs178.gack.domain.ScrollOfTeleportation;
 import edu.gac.mcs178.gack.domain.Thing;
 import edu.gac.mcs178.gack.domain.Troll;
 import edu.gac.mcs178.gack.domain.Witch;
@@ -45,7 +46,7 @@ public class GackWorld extends World {
 		computerLab.addNewNeighbor("east", lounge);
 		offices.addNewNeighbor("north", lounge); 
 		
-		new Troll("Max", po, 2);
+		new Troll("Max", po, 2); 
 		new AutoPerson("Karl", computerLab, 4); 
 		new Witch("Barbara", offices, 3, pond);
 		new Wizard("Elvee", offices, 1, chamberOfWizards);
@@ -55,6 +56,9 @@ public class GackWorld extends World {
 		foodService.gain(new Chocolate("Kitkat")); 
 		
 		lounge.gain(new Thing("Karl's glasses"));
+		//adding Magicscrolls
+		po.gain(new ScrollOfTeleportation("Secret Letter",2));
+		
 		
 		library.gain(new Scroll("Scroll of Enlightenment"));
 		String[] someTitles = {"War and Peace", "Iliad", "Collected Works of Rilke"};

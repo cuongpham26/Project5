@@ -4,11 +4,9 @@ import edu.gac.mcs178.gack.Utility;
 
 public class Troll extends AutoPerson{ 
 		
-		private Place pond;
 		
 		public Troll(String name, Place place, int threshold) {
 			super(name, place, threshold);
-			//this.pond = pond;
 		}
 
 		@Override
