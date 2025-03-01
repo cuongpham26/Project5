@@ -6,6 +6,7 @@ import edu.gac.mcs178.gack.domain.Person;
 import edu.gac.mcs178.gack.domain.Place;
 import edu.gac.mcs178.gack.domain.Scroll;
 import edu.gac.mcs178.gack.domain.Thing;
+import edu.gac.mcs178.gack.domain.Troll;
 import edu.gac.mcs178.gack.domain.Witch;
 import edu.gac.mcs178.gack.domain.Wizard;
 
@@ -42,16 +43,16 @@ public class GackWorld extends World {
 		lounge.addNewNeighbor("west", computerLab);
 		lounge.addNewNeighbor("south", offices);
 		computerLab.addNewNeighbor("east", lounge);
-		offices.addNewNeighbor("north", lounge);
+		offices.addNewNeighbor("north", lounge); 
 		
-		new AutoPerson("Max", offices, 2);
+		new Troll("Max", po, 2);
 		new AutoPerson("Karl", computerLab, 4); 
 		new Witch("Barbara", offices, 3, pond);
 		new Wizard("Elvee", offices, 1, chamberOfWizards);
 		//adding chocolate to food service
 		foodService.gain(new Chocolate("Snickers"));
 		foodService.gain(new Chocolate("Hersheys"));
-		foodService.gain(new Chocolate("Kitkat"));
+		foodService.gain(new Chocolate("Kitkat")); 
 		
 		lounge.gain(new Thing("Karl's glasses"));
 		
