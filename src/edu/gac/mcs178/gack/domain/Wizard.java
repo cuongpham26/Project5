@@ -2,6 +2,8 @@ package edu.gac.mcs178.gack.domain;
 
 import java.util.List;
 
+import edu.gac.mcs178.gack.Utility;
+
 public class Wizard extends AutoPerson {
 	
 	private Place chamber;
@@ -14,10 +16,10 @@ public class Wizard extends AutoPerson {
 	@Override
 	public void act() {
 		List<Scroll> scrolls = Scroll.scrollsIn(getPlace());
-		if ((!scrolls.isEmpty()) && (!getPlace().equals(chamber))) {
-			take(scrolls.get(0));
+		if (!scrolls.isEmpty() && !getPlace().equals(chamber)) {
+			take(scrolls.get(Utility.randInt(scrolls.size())));
 			moveTo(chamber);
-			lose(scrolls.get(0));
+			lose(scrolls.get(Utility.randInt(scrolls.size())));
 		} else {
 			super.act();
 		}

@@ -20,18 +20,18 @@ public class Witch extends AutoPerson {
 		if (!others.isEmpty()) {
 			Person victim = others.get(Utility.randInt(others.size()));
 			say("I am going to attack " + victim.getName()); 
-			//get the list of chocolates a victim has 
 			
+			// get the list of chocolates a victim has 
 			List<Chocolate> chocolates = Chocolate.chocolateList(victim);
-			if(chocolates.isEmpty() || !this.getName().equals("Barbara")) { 
+			
+			if(chocolates.isEmpty()) { 
 				curse(victim); 
-			}
-			//take and eat victims chocolate
-			for (Chocolate chocolate : chocolates) {
-				victim.lose(chocolate);
-				this.take(chocolate); 
-				this.eat(chocolate);
-				return; 
+			} else {
+				// take and eat victims chocolate
+				Chocolate randomChocolate = chocolates.get(Utility.randInt(chocolates.size()));
+				victim.lose(randomChocolate);
+				this.take(randomChocolate);
+				this.eat(randomChocolate);
 			}
 		} else {
 			super.act();

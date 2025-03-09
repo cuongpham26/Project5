@@ -14,17 +14,15 @@ public class Troll extends AutoPerson{
 			List<Person> others = otherPeopleAtSamePlace();
 			if (!others.isEmpty()) {
 				Person victim = others.get(Utility.randInt(others.size()));
-				//get the list of chocolates a victim has 
+				// get the list of chocolates a victim has 
 				List<Chocolate> chocolates = Chocolate.chocolateList(victim);
 				if(!(chocolates.isEmpty())) { 
 					say("I am going to take " + victim.getName() + "'s chocolate"); 
 					//take and eat victims chocolate
-					for (Chocolate chocolate : chocolates) {
-						victim.lose(chocolate);
-						this.take(chocolate); 
-						this.eat(chocolate);
-						return; 
-					}
+					Chocolate randomChocolate = chocolates.get(Utility.randInt(chocolates.size()));
+					victim.lose(randomChocolate);
+					this.take(randomChocolate);
+					this.eat(randomChocolate);
 				}
 				
 			} else {

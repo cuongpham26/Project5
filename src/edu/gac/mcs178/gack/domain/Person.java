@@ -22,7 +22,6 @@ public class Person {
 		this.place = place;
 		this.possessions = new ArrayList<Thing>();
 		place.gain(this);
-		//person defined here 
 	}
 	
 	public void say(String text) {
@@ -66,11 +65,11 @@ public class Person {
 			Utility.displayMessage(this + " does not have " + scroll);
 		}
 	}
-	//adding the eat method
+
 	public void eat (Chocolate chocolate) {
-		if ((chocolate.isOwned())&& (chocolate.getOwner().equals(this))){
+		if ((chocolate.isOwned()) && (chocolate.getOwner().equals(this))){
 			chocolate.beEaten();
-		}else {
+		} else {
 			Utility.displayMessage(this + " does not have " + chocolate);
 		
 		}

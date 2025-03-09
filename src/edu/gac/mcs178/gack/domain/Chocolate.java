@@ -11,20 +11,18 @@ public class Chocolate extends Thing {
 		super(name);
 	}
 	
-	//beEaten method 
 	public void beEaten(){
 		Person owner = getOwner();
-		//if chocolate doesn't have an owner
-		if (owner==null) {
+		// if chocolate doesn't have an owner
+		if (owner == null) {
 			Utility.displayMessage("No one has " + getName()); 
 			return;
 		}	
-		Place ownerPlace=owner.getPlace(); 
-		owner.lose(this); //owner looses chocolate 
-		ownerPlace.lose(this); //gone from owners place
-		Utility.displayMessage(owner.getName()+" has eaten the " + getName()); 
+		owner.lose(this); // owner loses chocolate 
+		owner.getPlace().lose(this); // gone from owners place
+		Utility.displayMessage(owner.getName() + " has eaten the " + getName()); 
   } 
-	//method that stores and returns a players list of chocolate
+	// method that stores and returns a players list of chocolate
 	public static List<Chocolate> chocolateList(Person person) {
 		ArrayList<Chocolate> chocolateAvailable = new ArrayList<Chocolate>();
 		for (Thing thing : person.getPossessions()) {
