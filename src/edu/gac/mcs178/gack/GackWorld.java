@@ -1,10 +1,13 @@
 package edu.gac.mcs178.gack;
 
 import edu.gac.mcs178.gack.domain.AutoPerson;
+import edu.gac.mcs178.gack.domain.Chocolate;
 import edu.gac.mcs178.gack.domain.Person;
 import edu.gac.mcs178.gack.domain.Place;
 import edu.gac.mcs178.gack.domain.Scroll;
+import edu.gac.mcs178.gack.domain.ScrollOfTeleportation;
 import edu.gac.mcs178.gack.domain.Thing;
+import edu.gac.mcs178.gack.domain.Troll;
 import edu.gac.mcs178.gack.domain.Witch;
 import edu.gac.mcs178.gack.domain.Wizard;
 
@@ -22,7 +25,7 @@ public class GackWorld extends World {
 		Place computerLab = new Place("Computer Lab");
 		Place offices = new Place("Offices");
 		Place dormitory = new Place("Dormitory");
-		Place pond = new Place("Pond");
+		Place pond = new Place("Pond"); 
 		
 		foodService.addNewNeighbor("down", po);
 		po.addNewNeighbor("south", alumniHall);
@@ -35,20 +38,27 @@ public class GackWorld extends World {
 		dormitory.addNewNeighbor("west", goodShipOlin);
 		library.addNewNeighbor("east", library);
 		library.addNewNeighbor("south", goodShipOlin);
-		goodShipOlin.addNewNeighbor("north", library);
+		goodShipOlin.addNewNeighbor("north", library); 
 		goodShipOlin.addNewNeighbor("east", dormitory);
 		goodShipOlin.addNewNeighbor("up", lounge);
 		lounge.addNewNeighbor("west", computerLab);
 		lounge.addNewNeighbor("south", offices);
 		computerLab.addNewNeighbor("east", lounge);
-		offices.addNewNeighbor("north", lounge);
+		offices.addNewNeighbor("north", lounge); 
 		
-		new AutoPerson("Max", offices, 2);
-		new AutoPerson("Karl", computerLab, 4);
+		new Troll("Max", po, 2); 
+		new AutoPerson("Karl", computerLab, 4); 
 		new Witch("Barbara", offices, 3, pond);
 		new Wizard("Elvee", offices, 1, chamberOfWizards);
+		//adding chocolate to food service
+		foodService.gain(new Chocolate("Snickers"));
+		foodService.gain(new Chocolate("Hersheys"));
+		foodService.gain(new Chocolate("Kitkat")); 
 		
 		lounge.gain(new Thing("Karl's glasses"));
+		//adding Magicscrolls
+		po.gain(new ScrollOfTeleportation("Secret Letter",2));
+		
 		
 		library.gain(new Scroll("Scroll of Enlightenment"));
 		String[] someTitles = {"War and Peace", "Iliad", "Collected Works of Rilke"};
@@ -57,7 +67,8 @@ public class GackWorld extends World {
 		}
 		computerLab.gain(new Scroll("Unix Programmers Manual"));
 		computerLab.gain(new Scroll("NeXT User's Reference"));
-		
-		setPlayer(new Person("player", dormitory));
+		//added a new scroll
+		dormitory.gain(new Scroll("late lab report"));
+		setPlayer(new Person("player", foodService));
 	}
 }

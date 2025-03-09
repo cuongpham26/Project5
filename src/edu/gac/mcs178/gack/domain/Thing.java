@@ -6,6 +6,7 @@ public class Thing {
 	private Person owner;
 	
 	public String getName() { return name; }
+	//modified the string class to contain name
 	public void setName(String name) { this.name = name; }
 	public Person getOwner() { return owner; }
 	public void setOwner(Person owner) { this.owner = owner; }
@@ -23,7 +24,7 @@ public class Thing {
 		owner = null;
 	}
 	
-	@Override
+	@Override 
 	public String toString() {
 		return name;
 	}

@@ -22,6 +22,7 @@ public class Person {
 		this.place = place;
 		this.possessions = new ArrayList<Thing>();
 		place.gain(this);
+		//person defined here 
 	}
 	
 	public void say(String text) {
@@ -63,6 +64,15 @@ public class Person {
 			scroll.beRead();
 		} else {
 			Utility.displayMessage(this + " does not have " + scroll);
+		}
+	}
+	//adding the eat method
+	public void eat (Chocolate chocolate) {
+		if ((chocolate.isOwned())&& (chocolate.getOwner().equals(this))){
+			chocolate.beEaten();
+		}else {
+			Utility.displayMessage(this + " does not have " + chocolate);
+		
 		}
 	}
 	
@@ -120,6 +130,15 @@ public class Person {
 		if (!people.isEmpty()) {
 			say("Hi " + Utility.verbalizeList(people, "no one")); // "no one" can't happen
 		}
+	}
+	//adding give method
+	public void give(Thing thing, Person recipient) {
+		if(!possessions.contains(thing)) {
+			Utility.displayMessage(this + "doesn't have" + thing);
+			return;
+		}
+		this.lose(thing); //removed from players possessions
+		recipient.take(thing); //added to receivers possessions
 	}
 	
 	@Override

@@ -24,7 +24,7 @@ public class GiveActionListener implements ActionListener {
 
 	public GiveActionListener(GraphicalUserInterface gui, Person player, JComboBox giveJComboBox) {
 		super();
-		this.gui = gui;
+		this.gui = gui; 
 		this.player = player;
 		this.giveJComboBox = giveJComboBox;
 		this.enabled = true;
@@ -89,8 +89,21 @@ class GiveAction extends AbstractAction  {
 	}
 
 	public void actionPerformed(ActionEvent event) {
-		gui.displayMessage("You need to write the code here to have " + player + " give " + item + " to " + recipient);
-		gui.playTurn();
+		//gui.displayMessage("You need to write the code here to have " + player + " give " + item + " to " + recipient);
+		//gui.playTurn(); 
+		if(player.getPossessions().contains(item)) {
+			player.give(item, recipient);
+			//make sure ownership is transfered correctly
+			if (item.getOwner().equals(recipient) && recipient.getPossessions().contains(item)) {
+	            gui.displayMessage(player.getName() + " gives " + item.getName() + " to " + recipient.getName() + ".");
+	            gui.playTurn();
+	        } else {
+	            gui.displayMessage("Item not transferred properly to " + recipient.getName() + ".");
+	        }
+	    }else {
+	        gui.displayMessage(player.getName() + " doesn't have " + item.getName() + " to give.");
+			
+		}
 	}
 }
 
